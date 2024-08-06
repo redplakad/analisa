@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('dokumen_debitur', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('debitur_id')->constrained('debitur');
+            $table->foreignId('permohonan_id')->constrained('permohonan_kredit');
+            $table->string('jenis_dokumen', 255);
+            $table->string('nama_dokumen', 255);
+            $table->date('tanggal_terbit');
+            $table->text('catatan')->nullable();
+            $table->string('foto_dokumen', 255)->nullable();
             $table->timestamps();
         });
     }

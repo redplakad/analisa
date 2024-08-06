@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('biaya_debitur', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('debitur_id')->constrained('debitur');
+            $table->foreignId('permohonan_id')->constrained('permohonan_kredit');
+            $table->string('jenis_biaya', 255);
+            $table->string('nama_biaya', 255);
+            $table->decimal('nilai_biaya', 15, 2);
             $table->timestamps();
         });
     }

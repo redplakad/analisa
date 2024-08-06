@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('data_pekerjaan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('debitur_id')->constrained('debitur')->onDelete('cascade');
+            $table->foreignId('permohonan_id')->constrained('permohonan_kredit')->onDelete('cascade');
+            $table->string('nama_instansi', 255);
+            $table->text('alamat_instansi');
+            $table->string('status_pekerja', 50);
+            $table->integer('jangka_waktu_kontrak')->nullable();
+            $table->integer('lama_bekerja');
+            $table->string('bidang_perusahaan', 255);
             $table->timestamps();
         });
     }
